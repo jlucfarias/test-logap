@@ -66,7 +66,7 @@ app.post('/', upload.single('arquivo-curva'), (req, res) => {
 
       records.forEach(async record => {
         try {
-          await knex('production').insert([{ speed: record['Velocidade do vento (m/s)'], power: record['Potencia (MWh)'], curve_id: curve_id[0] }]);
+          await knex('production').insert([{ curve_id: curve_id[0], power: record['Potencia (MWh)'], speed: record['Velocidade do vento (m/s)'] }]);
           res.send('Done');
         } catch (error) {
           console.error(error);

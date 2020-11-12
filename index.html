@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+  <header>
+    <button class="tab" onclick="changeTab(event, 'chart')" id="default">Gráfico</button>
+    <button class="tab" onclick="changeTab(event, 'algo')">Algorítmo</button>
+  </header>
+  <section id="chart">
+    <form action="/" method="POST" enctype="multipart/form-data" onsubmit="sendCurve(event)">
+      <input type="text" name="nome-curva" placeholder="Informe o nome da curva de potência" />
+      <label>
+        <input type="file" onchange="setFilename(event)" name="arquivo-curva"/>
+        <span>
+          Informe o arquivo para upload
+        </span>
+      </label>
+      <button type="submit">Enviar</button>
+    </form>
+    <main>
+      <select onchange="changeChart(event)">
+        <option value="false">Escolha uma opção</option>
+      </select>
+      <div id="container"></div>
+    </main>
+  </section>
+  <section id="algo">
+    <aside>
+      <form onsubmit="addNumber(event)">
+        <input type="number" name="new-number" pattern="[0-9]" inputmode="numeric"/>
+        <button type="submit">Adicionar</button>
+      </form>
+      <ul>
+      </ul>
+    </aside>
+    <main>
+      <form onsubmit="executeAlgo(event)">
+        <input type="number" name="target-number" pattern="[0-9]" inputmode="numeric"/>
+        <button type="submit">Executar</button>
+      </form>
+      <div id="result"></div>
+    </main>
+    <!-- ● Input 1 para entrada de número inteiros e um botão para adicionar o número a uma lista.
+    ● Listagem dos números adicionados.
+    ● Input 2 para entrada de número inteiro e um botão para executar o algoritmo.
+    ● Um campo para saída do resultado.
+
+    O algoritmo: Dado um número no input 2, deve ser verificado se existem dois números na listagem que somados são iguais ao número informado no input 2.
+    A saída do algoritmo deve ser os dois números encontrados. Caso não seja encontrado os dois números, deve ser mostrado uma mensagem informando. -->
+  </section>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="/static/helpers.js"></script>
+  <script src="/static/algo.js"></script>
+  <script src="/static/chart.js"></script>
+  <script>
+    function changeTab(event, tab) {
+      const sections = $$("section");
+      sections.forEach(section => {
+        section.style.display = 'none';
+      });
+
+      const tabs = $$('.tab');
+      tabs.forEach(tab => {
+        if (tab.classList.contains('active')) {
+          tab.classList.toggle('active');
+        }
+      });
+
+      $(`#${tab}`).style.display = "flex";
+      event.currentTarget.classList.toggle('active');
+    }
+
+    $('#default').click();
+
+    (async () => {
+      getCurves();
+    })();
+  </script>
+</body>
+</html>

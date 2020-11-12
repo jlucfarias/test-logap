@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+}
+
+header {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 30px;
+  background-color: #eee;
+  display: flex;
+  overflow: hidden;
+}
+
+header .tab {
+  height: 100%;
+  border: none;
+  margin: 0;
+  font-size: 1.15rem;
+  width: 10%;
+  transition: 0.3s;
+  outline: none;
+}
+
+header .tab:hover {
+  background-color: #ddd;
+}
+
+header .tab.active {
+  background-color: #ccc;
+}
+
+section {
+  display: none;
+  height: calc(100vh - 80px);
+}
+
+#chart {
+  flex-direction: column;
+  width: 60vw;
+  margin: 0 auto;
+}
+
+#chart > form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+#chart > form > input {
+  font-size: 1rem;
+  border: 1px solid #555;
+  padding: 8px 0 8px 10px;
+  width: 40%;
+}
+
+#chart > form > label {
+  font-size: 1rem;
+  color: #757575;
+  border: 1px solid #555;
+  padding: 8px 0 8px 10px;
+  width: 40%;
+  position: relative;
+}
+
+#chart > form > label.active {
+  color: #212121;
+}
+
+#chart > form > label::after {
+  position: absolute;
+  right: 5%;
+  content: "";
+  top: 10%;
+  width: 25px;
+  height: 25px;
+  background-image: url("/static/upload-icon.svg");
+  background-position: center;
+  background-size: contain;
+}
+
+#chart > form > label > input[type="file"] {
+  display: none;
+}
+
+#chart > form > button {
+  font-size: 1rem;
+  border: none;
+  padding: 8px 15px;
+  background-color: #8e24aa;
+  color: #fff;
+  user-select: none;
+}
+
+#chart > main {
+  width: 100%;
+}
+
+#chart > main > select {
+  width: 100%;
+  font-size: 1rem;
+  padding: 8px 10px 8px 10px;
+  appearance: none;
+  background: transparent;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' width='25' height='25' viewBox='0 0 25 25' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 99.5%;
+  background-position-y: 5px;
+  border: 1px solid #555;
+  margin-bottom: 30px;
+}
+
+#algo {
+  display: flex;
+  padding-left: 25px;
+  justify-content: space-around;
+}
+
+#algo form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#algo form > input {
+  font-size: 1rem;
+  border: 1px solid #555;
+  padding: 8px 0 8px 10px;
+  margin-right: 10px;
+}
+
+#algo form > button {
+  font-size: 1rem;
+  border: none;
+  padding: 8px 15px;
+  background-color: #8e24aa;
+  color: #fff;
+  user-select: none;
+}
+
+#algo > aside > ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(30vw - 50px);
+}
+
+#algo > aside > ul > li {
+  font-size: 1.25rem;
+  margin-right: 10px;
+}
+
+#algo > main > #result {
+  width: 100%;
+  height: 200px;
+  box-shadow: 0 0 6px #bbb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#algo > main > #result h1 {
+  font-size: 1.2rem;
+  font-weight: normal;
+  width: 95%;
+  text-align: center;
+}

@@ -29,6 +29,7 @@ const getCurves = () => {
     .then(curves => {
       const select = $('#chart > main > select');
       select.innerHTML = "<option value='false'>Escolha uma opção</option>";
+      curves = curves.filter(c => c !== null && c !== undefined);
       curves.map(curve => {
         const option = document.createElement('option');
         option.value = curve.data.map(JSON.stringify).join('|');

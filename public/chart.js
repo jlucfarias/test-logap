@@ -107,7 +107,7 @@ const changeChart = event => {
       },
       series: [{
           color: 'rgba(0, 0, 0, 1)',
-          data: data.map(Object.values).map(v => v.map(vv => typeof vv === 'string' && vv.replace(',', '.'))).map(v => v.map(Number))
+          data: data.map(Object.values)
       }]
     });
   }

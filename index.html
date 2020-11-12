@@ -15,7 +15,7 @@
     <form action="/" method="POST" enctype="multipart/form-data" onsubmit="sendCurve(event)">
       <input type="text" name="nome-curva" placeholder="Informe o nome da curva de potência" />
       <label>
-        <input type="file" onchange="setFilename(event)" name="arquivo-curva"/>
+        <input type="file" onchange="setFilename(event)" name="arquivo-curva" accept=".csv"/>
         <span>
           Informe o arquivo para upload
         </span>

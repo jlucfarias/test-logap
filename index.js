@@ -1,6 +1,9 @@
 const express = require('express');
 const parse = require('csv-parse');
-const knex = require('knex')(require('./knexfile').development);
+const knex = require('knex')(
+  process.env.NODE_ENV === 'production' ?
+  require('./knexfile').production
+  : require('./knexfile').development);
 const multer = require('multer');
 const upload = multer({ dest:'./uploads/', preservePath: true, storage: multer.memoryStorage() });
 const app = express();

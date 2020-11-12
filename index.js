@@ -4,7 +4,7 @@ const knex = require('knex')(require('./knexfile').development);
 const multer = require('multer');
 const upload = multer({ dest:'./uploads/', preservePath: true, storage: multer.memoryStorage() });
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use('/static', express.static('public'));
 app.use(express.json());

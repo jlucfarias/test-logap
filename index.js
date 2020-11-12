@@ -66,7 +66,9 @@ app.post('/', upload.single('arquivo-curva'), (req, res) => {
 
       records.forEach(async record => {
         try {
-          await knex('production').insert([{ curve_id: curve_id[0], power: record['Potencia (MWh)'], speed: record['Velocidade do vento (m/s)'] }]);
+          const power = record['Potencia (MWh)'];
+          const speed = record['Velocidade do vento (m/s)'];
+          await knex('production').insert([{ curve_id: curve_id[0], power: typeof power === 'string' ? Number(power.replace(',', '.')) : power, speed: typeof speed === 'string' ? Number(speed.replace(',', '.')) : speed }]);
           res.send('Done');
         } catch (error) {
           console.error(error);
